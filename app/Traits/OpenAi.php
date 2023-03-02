@@ -20,6 +20,7 @@ trait OpenAi
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://api.openai.com/v1/completions',
             CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER =>false,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
