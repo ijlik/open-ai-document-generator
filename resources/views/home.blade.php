@@ -3,22 +3,6 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">{{ __('Entry Judul') }}</div>
-
-                    <div class="card-body">
-                        <form action="/home/add-keyword" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label>Masukan Judul Artikel <br>(pisahkan dengan semicolon ;)</label>
-                                <textarea class="form-control" rows="10" name="title"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-sm btn-primary mt-2">Save</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-8">
                 <div class="card">
                     <div
@@ -89,7 +73,7 @@
                                     <td>
                                         @if($keyword['is_ready'])
                                             @if(!$keyword['is_downloaded'])
-                                                <a href="/home/generate/{{ $keyword['id'] }}" target="_blank"
+                                                <a href="/home/generate/{{ $keyword['id'] }}"
                                                    class="btn btn-danger btn-sm">Download</a>
                                             @endif
                                         @else
@@ -103,6 +87,22 @@
                         </table>
 
                         {{ $keywords->links() }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">{{ __('Entry Judul') }}</div>
+
+                    <div class="card-body">
+                        <form action="/home/add-keyword" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label>Masukan Judul Artikel <br>(pisahkan dengan semicolon ;)</label>
+                                <textarea class="form-control" rows="10" name="title"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-primary mt-2">Save</button>
+                        </form>
                     </div>
                 </div>
             </div>

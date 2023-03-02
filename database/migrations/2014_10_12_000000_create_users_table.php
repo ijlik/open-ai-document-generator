@@ -19,9 +19,19 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('whitelist_otp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+        $user = \App\Models\User::create([
+            'name' => 'Bot ijlik',
+            'email' => 'bot@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('jancokasu'),
+            'whitelist_otp' => 123456
+        ]);
+        $user->markEmailAsVerified();
+        $user->save();
     }
 
     /**
