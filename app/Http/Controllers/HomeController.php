@@ -38,7 +38,7 @@ class HomeController extends Controller
             return Pdf::loadView('article', [
                 'title' => $keyword['title'],
                 'article' => $keyword['article']
-            ])->stream($keyword['id'] . '. ' . $keyword['title'] . '.pdf');
+            ])->download($keyword['id'] . '. ' . $keyword['title'] . '.pdf');
         }
     }
 
