@@ -21,7 +21,8 @@
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('List Judul') }} </div>
+                    <div
+                        class="card-header">{{ __('List Judul') }} {{ Queue::size() > 0 ? '(Loading '.number_format((100-(Queue::size()/(\App\Models\Article::count() * 4)*100)),2).'%)':'' }}</div>
 
                     <div class="card-body">
                         <table class="table">
