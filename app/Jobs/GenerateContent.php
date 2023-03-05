@@ -37,9 +37,12 @@ class GenerateContent implements ShouldQueue
             }
             if ($content !== null) {
                 if (isset($content['choices']) && isset($content['choices'][0]) && isset($content['choices'][0]['text'])) {
-                    $this->article['content'] = $this->formatNumber($content['choices'][0]['text']);
+                    $contentText = $content['choices'][0]['text'];
+                    $contentText = $this->formatHeadingUpper($contentText);
+                    $this->article['content'] = $contentText;
                     $this->article->save();
                 } else {
+                    Log::info($content);
                     Log::info('Invalid json 2 for Generate content for Keyword ' . $keyword['title']);
                 }
             } else {

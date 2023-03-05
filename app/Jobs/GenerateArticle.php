@@ -28,23 +28,26 @@ class GenerateArticle implements ShouldQueue
             $this->keyword->load('article');
             if ($this->keyword['article'] === null) {
                 $newArticle = new Article();
+                $newArticle['opening'] = '-';
+                $newArticle['conclusion'] = '-';
+                $newArticle['key_point'] = '-';
                 $this->keyword->article()->save($newArticle);
             }
             $this->keyword->load('article');
             $article = $this->keyword['article'];
             if ($article['opening'] === null || $article['content'] === null || $article['conclusion'] === null || $article['key_point'] === null) {
-                if ($article['opening'] === null) {
-                    dispatch(new GenerateOpening($article));
-                }
+//                if ($article['opening'] === null) {
+//                    dispatch(new GenerateOpening($article));
+//                }
                 if ($article['content'] === null) {
                     dispatch(new GenerateContent($article));
                 }
-                if ($article['conclusion'] === null) {
-                    dispatch(new GenerateConclusion($article));
-                }
-                if ($article['key_point'] === null) {
-                    dispatch(new GenerateKeyPoint($article));
-                }
+//                if ($article['conclusion'] === null) {
+//                    dispatch(new GenerateConclusion($article));
+//                }
+//                if ($article['key_point'] === null) {
+//                    dispatch(new GenerateKeyPoint($article));
+//                }
             } else {
                 $this->keyword['is_ready'] = 1;
                 $this->keyword->save();

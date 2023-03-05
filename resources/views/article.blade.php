@@ -8,7 +8,6 @@
     h2 {
         text-align: center;
         font-size: 22px;
-        margin-bottom: 50px;
     }
 
     .section {
@@ -21,11 +20,7 @@
     <h2>{{ $title }}</h2>
 
     <div class="main-div">
-        <p style="text-align: justify; font-family: 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!! $article['opening'] !!}</p>
-        <p style="text-align: justify; font-family: 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!! $article['content'] !!}</p>
-        <p style="text-align: justify; font-family: 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!! $article['conclusion'] !!}</p>
-        <p style="text-align: justify; font-family: 'Times New Roman'">Poin-poin penting dalam {{ $title }} antara lain :</p>
-        <p style="text-align: justify; font-family: 'Times New Roman'">{!! $article['key_point'] !!}</p>
+        <p style="text-align: justify; font-family: 'Times New Roman'">{!! nl2br($article['content']) !!}</p>
     </div>
 
 </div>

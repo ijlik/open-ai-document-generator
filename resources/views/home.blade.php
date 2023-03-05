@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div
-                        class="card-header">{{ __('List Judul') }} {{ Queue::size() > 0 ? '(Loading '.number_format((100-(Queue::size()/(\App\Models\Article::count() * 4)*100)),2).'%)':'' }}</div>
+                        class="card-header">{{ __('List Judul') }} {{ Queue::size() > 0 ? '(Loading '.number_format((100-(Queue::size()/(\App\Models\Article::count())*100)),2).'%)':'' }}</div>
 
                     <div class="card-body">
                         <table class="table">
@@ -73,8 +73,10 @@
                                     <td>
                                         @if($keyword['is_ready'])
                                             @if(!$keyword['is_downloaded'])
-                                                <a href="/home/generate/{{ $keyword['id'] }}"
-                                                   class="btn btn-danger btn-sm">Download</a>
+                                                <a href="/home/generate/{{ $keyword['id'] }}?format=pdf"
+                                                   class="btn btn-danger btn-sm">.pdf</a>
+{{--                                                <a href="/home/generate/{{ $keyword['id'] }}?format=docx"--}}
+{{--                                                   class="btn btn-info btn-sm">.docx</a>--}}
                                             @endif
                                         @else
                                             <a href="/home/generate/{{ $keyword['id'] }}"
